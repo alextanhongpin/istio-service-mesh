@@ -47,3 +47,40 @@ Output:
 ```
 hello world%
 ```
+
+## ExternalName
+
+Maps a Service to a DNS name.
+
+```yaml
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: db1
+  namespace: prod
+spec:
+  type: ExternalName
+  externalName: my.database.example.com
+```
+
+## External IP
+
+```yaml
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: externalIpAssignedService
+spec:
+  selector:
+    app: externalIpService
+  ports:
+    - name: http
+      protocol: TCP
+      port: 80
+      targetPort: 9000
+  externalIPs:
+    - 70.34.1.23
+```
+
