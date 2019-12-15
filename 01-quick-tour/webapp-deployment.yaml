@@ -19,7 +19,7 @@ spec:
         - name: webapp
           # Toggle between version 1.0, 2.0 and 3.0 to see the changes in
           # behaviour.
-          image: alextanhongpin/python:3.0
+          image: alextanhongpin/python:5.0
           imagePullPolicy: Never
           ports:
             - containerPort: 5000
