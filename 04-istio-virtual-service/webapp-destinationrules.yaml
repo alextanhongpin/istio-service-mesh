@@ -1,0 +1,28 @@
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: webapp-destination
+spec:
+  host: webservice
+  trafficPolicy:
+    connectionPool:
+      tcp:
+        maxConnections: 100
+        connectTimeout: 30ms
+  subsets:
+    - name: v1
+      labels:
+        version: v5.0
+      trafficPolicy:
+        connectionPool:
+          tcp:
+            # Default 1024.
+            maxConnections: 100
+            connectTimeout: 30ms
+            tcpKeepAlive:
+              time: 7200s
+              interval: 75s
+    - name: v0
+      labels:
+        version: v4.0

@@ -1,5 +1,6 @@
 from flask import Flask
 import datetime
+import os
 
 app = Flask(__name__)
 
@@ -7,7 +8,8 @@ app = Flask(__name__)
 @app.route('/')
 def main():
     current_datetime = datetime.datetime.now()
-    return f'hello world, v5 {current_datetime}'
+    message = os.environ['MESSAGE']
+    return f'hello world, v5 {current_datetime} { message }'
 
 
 @app.route('/health')

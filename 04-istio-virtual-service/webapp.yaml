@@ -2,12 +2,12 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: webapp-deployment
+  name: webapp-deployment-5.0
   labels:
     # Istio does routing based on application version.
     # All deployments and pods must have app and version labels applied.
     app: webapp
-    version: v5
+    version: v5.0
 spec:
   replicas: 1
   selector:
@@ -17,12 +17,45 @@ spec:
     metadata:
       labels:
         app: webapp
-        version: v5
+        version: v5.0
+    spec:
+      containers:
+        - name: webapp
+          image: alextanhongpin/python:5.0
+          env:
+            - name: MESSAGE
+              value: 'v5.0 is great'
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 5000
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webapp-deployment-4.0
+  labels:
+    # Istio does routing based on application version.
+    # All deployments and pods must have app and version labels applied.
+    app: webapp
+    version: v4.0
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: webapp
+  template:
+    metadata:
+      labels:
+        app: webapp
+        version: v4.0
     spec:
       containers:
         - name: webapp
           image: alextanhongpin/python:5.0
           imagePullPolicy: Never
+          env:
+            - name: MESSAGE
+              value: 'v4.0 is so so'
           ports:
             - containerPort: 5000
 ---
