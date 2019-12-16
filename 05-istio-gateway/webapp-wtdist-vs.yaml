@@ -11,7 +11,7 @@ spec:
   gateways:
     - webapp-gateway
     # Applies to all the sidecars in the mesh.
-    # - mesh
+    - mesh
   http:
     - route:
         - destination:

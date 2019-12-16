@@ -1,5 +1,12 @@
 # Istio Gateway
 
+## Configure Profile
+
+```
+$ istioctl manifest apply --set profile=demo --set values.global.mtls.auto=true --set values.global.m
+tls.enabled=false
+```
+
 ## Deployment
 Deploy our application with the gateway.
 ```
@@ -50,10 +57,9 @@ $ k describe secret istio-ingressgateway-certs -n istio-system
 ```
 export INGRESS_PORT=$(kubectl -n istio-system get service istio-ingressgateway -o jsonpath='{.spec.ports[?(@.name=="http2")].nodePort}')
 export SECURE_INGRESS_PORT=$(kubectl -n istio-system get service istio-ingressgateway -o jsonpath='{.spec.ports[?(@.name=="https")].nodePort}')
-
 export INGRESS_HOST=127.0.0.1
 ```
 
 ```
-curl -v -HHost:webservice.greetings.com --resolve webservice.greetings.com:443:localhost --cacert cert.pem --key public.pem https://webservice.greetings.com
+curl -v -HHost:webservice.greetings.com --resolve webservice.greetings.com:$SECURE_INGRESS_PORT:$INGRESS_HOST --cacert cert.pem https://webservice.greetings.com:$SECURE_INGRESS_PORT
 ```
