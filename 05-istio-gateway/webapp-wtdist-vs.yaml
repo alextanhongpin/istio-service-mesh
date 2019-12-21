@@ -9,7 +9,7 @@ spec:
     - webservice
     - webservice.greetings.com
   gateways:
-    - webapp-gateway
+    - istio-app/webapp-gateway
     # Applies to all the sidecars in the mesh.
     - mesh
   http:

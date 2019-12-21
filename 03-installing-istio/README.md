@@ -3,6 +3,12 @@
 ```
 $ brew install istioctl
 $ istioctl version
+
+# OR
+
+$ curl -L https://istio.io/downloadIstio | sh -
+$ cd istio-1.4.2
+$ mv istioctl /usr/local/bin/istioctl
 ```
 
 ## Installing Demo Profile

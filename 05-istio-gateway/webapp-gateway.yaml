@@ -13,8 +13,7 @@ spec:
         name: http
         protocol: HTTP
       hosts:
-        - '*'
-        # - '*.greetings.com'
+        - '*.greetings.com'
     # - port:
     #     number: 443
     #     name: https
