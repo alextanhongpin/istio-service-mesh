@@ -5,6 +5,11 @@ $ brew install istioctl
 $ istioctl version
 ```
 
+## Installing Demo Profile
+
+```
+$ istioctl manifest apply --set profile=demo
+```
 
 
 ## Installation with Helm
@@ -34,6 +39,12 @@ $ istioctl dashboard prometheus
 $ istioctl experimental metrics <service-name>
 ```
 
+# Uninstalling Istio
+
+```bash
+$ istioctl manifest generate --set profile=demo | kubectl delete -f -
+```
 ## References
+
 
 https://istio.io/docs/setup/install/istioctl/

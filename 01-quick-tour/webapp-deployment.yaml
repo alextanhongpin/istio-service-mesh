@@ -22,7 +22,8 @@ spec:
           image: alextanhongpin/python:5.0
           imagePullPolicy: Never
           ports:
-            - containerPort: 5000
+            - name: http
+              containerPort: 5000
           readinessProbe:
             httpGet:
               path: /health

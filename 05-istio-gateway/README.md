@@ -3,8 +3,8 @@
 ## Configure Profile
 
 ```
-$ istioctl manifest apply --set profile=demo --set values.global.mtls.auto=true --set values.global.m
-tls.enabled=false
+$ k label ns istio-app istio-injection=enabled
+$ istioctl manifest apply --set profile=demo --set values.global.mtls.auto=true --set values.global.mtls.enabled=false
 ```
 
 ## Deployment
@@ -49,6 +49,12 @@ $ k create -n istio-system secret tls istio-ingressgateway-certs --key public.pe
 
 # Validate.
 $ k describe secret istio-ingressgateway-certs -n istio-system
+```
+
+# Delete
+
+```
+$ k delete secret istio-ingressgateway-certs -n istio-system
 ```
 
 

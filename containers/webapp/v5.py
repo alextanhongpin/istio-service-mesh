@@ -8,7 +8,7 @@ app = Flask(__name__)
 @app.route('/')
 def main():
     current_datetime = datetime.datetime.now()
-    message = os.environ['MESSAGE']
+    message = os.environ.get('MESSAGE')
     return f'hello world, v5 {current_datetime} { message }'
 
 

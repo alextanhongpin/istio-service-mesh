@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: webservice
+  name: webapp-service
 spec:
   # Using Docker Desktop, NodePort is required to expose the endpoint.
   type: NodePort
